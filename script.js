@@ -102,6 +102,7 @@ if (bookGrid) {
     document.addEventListener('DOMContentLoaded', () => {
         renderBooks();
         setupEventListeners();
+        initScrollAnimations();
     });
 }
 
@@ -129,9 +130,11 @@ function renderBooks() {
         return;
     }
 
-    filteredBooks.forEach(book => {
+    filteredBooks.forEach((book, index) => {
         const card = document.createElement('div');
-        card.className = 'book-card animate-in';
+        card.className = 'book-card fade-in-up';
+        // Set initial opacity to 0 for intersection observer
+        card.style.opacity = '0';
         card.innerHTML = `
             <div class="book-cover">
                 <img src="${book.coverImage}" alt="${book.title} cover">
@@ -148,6 +151,11 @@ function renderBooks() {
             </div>
         `;
         bookGrid.appendChild(card);
+        // Delay animation slightly based on index
+        card.style.animationDelay = `${index * 0.1}s`;
+        if (typeof observer !== 'undefined') {
+            observer.observe(card);
+        }
     });
 }
 
@@ -219,4 +227,38 @@ function setupEventListeners() {
             renderBooks();
         });
     }
+}
+
+// Intersection Observer for Scroll Animations
+let observer;
+function initScrollAnimations() {
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+    };
+
+    observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                // Remove fade-in-up if it was already applied and re-apply to trigger
+                entry.target.style.animation = 'none';
+                entry.target.offsetHeight; /* trigger reflow */
+                entry.target.style.animation = null; 
+                entry.target.classList.add('fade-in-up');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Observe static elements
+    document.querySelectorAll('.section-header, .footer-col, .about-text, .stat-card').forEach((el, index) => {
+        el.style.opacity = '0';
+        // Add staggered delay for stat cards
+        if (el.classList.contains('stat-card')) {
+            el.style.animationDelay = `${(index % 6) * 0.1}s`;
+        }
+        observer.observe(el);
+    });
 }
