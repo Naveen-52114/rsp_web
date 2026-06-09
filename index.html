@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuraPress | Premium E-Book Publishing</title>
+    <meta name="description" content="AuraPress - A premium platform for reading and publishing aesthetic digital books.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">Aura<span>Press</span></div>
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="#library">Library</a>
+            <a href="#about">About</a>
+        </div>
+        <a href="publish.html"><button class="btn-primary">Publish with us</button></a>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Immerse Yourself in Stories</h1>
+            <p>Discover our curated collection of premium e-books, beautifully crafted for the modern reader.</p>
+            <div class="search-container">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search by title, author, or keyword...">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="library" class="books-section">
+        <div class="section-header">
+            <h2>Our E-Books</h2>
+            <p style="color: #aaa;">Explore our diverse catalog</p>
+        </div>
+
+        <div class="categories" id="categoryContainer">
+            <button class="category-btn active" data-category="all">All Books</button>
+            <button class="category-btn" data-category="fiction">Fiction</button>
+            <button class="category-btn" data-category="non-fiction">Non-Fiction</button>
+            <button class="category-btn" data-category="educational">Educational</button>
+        </div>
+
+        <div class="subcategories" id="subcategoryContainer">
+            <!-- Subcategories will be populated by JS -->
+        </div>
+
+        <div class="book-grid" id="bookGrid">
+            <!-- Books will be populated by JS -->
+        </div>
+    </section>
+
+    <footer id="about">
+        <div class="footer-content">
+            <div class="footer-col company-details">
+                <h3>AuraPress Publishing</h3>
+                <p>Bringing stories to life in the digital age. We empower authors and enchant readers with beautifully designed e-books.</p>
+                <div style="margin-top: 1.5rem;">
+                    <p>📍 123 Digital Avenue, Innovation City, 90210</p>
+                    <p>📞 +1 (555) 123-4567</p>
+                    <p>✉️ hello@aurapress.com</p>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <a href="#library">Browse Library</a>
+                <a href="publish.html">Publish with Us</a>
+                <a href="#">Author Resources</a>
+                <a href="#">Reading App</a>
+            </div>
+            <div class="footer-col">
+                <h3>Legal</h3>
+                <a href="#">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Copyright Information</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 AuraPress Publishing. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
