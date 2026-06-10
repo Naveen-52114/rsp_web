@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPS E-Bookstore | Discover Premium Books</title>
+    <meta name="description" content="Welcome to RPS E-Bookstore. Discover premium scientific, tech, educational, and fictional books.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="logo" id="navLogo">
+            <i class="fas fa-book-open"></i> RPS<span>Bookstore</span>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html" class="active">Home</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Unlock a World of <span class="highlight">Knowledge</span></h1>
+            <p>Explore our curated collection of premium e-books, spanning Science, Technology, Novels, and Education. Read securely anywhere.</p>
+            <div class="search-container">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search by title, author, or category...">
+                    <button class="btn-primary" style="margin: 0.1rem 0.1rem 0.1rem 0; border-radius: 50px; font-size: 0.9rem; padding: 0.5rem 1.2rem;"><i class="fas fa-search"></i> Search</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="books-section" id="catalog">
+        <div class="section-header">
+            <h2>Explore Our Collection</h2>
+            <p style="color: #a0a0b0; margin-top: 0.5rem;">Find the perfect e-book to match your interests</p>
+        </div>
+
+        <div class="categories-container" id="categoriesContainer">
+            <button class="category-btn active" data-category="all">All Books</button>
+        </div>
+
+        <div class="book-grid" id="bookGrid">
+            <div class="spinner-container">
+                <div class="spinner"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col company-details">
+                <h3>RPS E-Bookstore</h3>
+                <p>Providing high-quality academic, scientific, and fictional publications to readers globally.</p>
+                <div style="margin-top: 1.5rem;">
+                    <p><i class="fas fa-map-marker-alt"></i> 11 Upper Boon Keng Road, Singapore</p>
+                    <p><i class="fas fa-envelope"></i> support@rpsbookstore.com</p>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <a href="#catalog">Browse Catalog</a>
+                <a href="login.html">My Account</a>
+                <a href="admin-login.html">Admin Portal</a>
+            </div>
+            <div class="footer-col">
+                <h3>Customer Care</h3>
+                <a href="#">FAQ & Support</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 RPS E-Bookstore. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

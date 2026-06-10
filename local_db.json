@@ -1,0 +1,20 @@
+{
+  "admins": {
+    "fixed_admin": {
+      "email": "admin@rpsbookstore.com",
+      "passwordHash": "$2a$10$vAiUKdtP6KoZ2awwTL2Hf.zQZ6evDcsFKRJSf2EED7R0uNRniezVK"
+    }
+  },
+  "users": {},
+  "passwordResets": {},
+  "books": {},
+  "categories": {
+    "Story": true,
+    "Science": true,
+    "Technology": true,
+    "Education": true,
+    "Novel": true
+  },
+  "purchases": {},
+  "payments": {}
+}

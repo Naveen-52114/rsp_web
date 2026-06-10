@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard | RPS E-Bookstore</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="logo" style="cursor:pointer;" onclick="window.location.href='index.html'">
+            <i class="fas fa-book-open"></i> RPS<span>Bookstore</span>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-link active" onclick="switchPanel('library')">
+                <i class="fas fa-book"></i> My Library
+            </div>
+            <div class="sidebar-link" onclick="switchPanel('profile')">
+                <i class="fas fa-user"></i> My Profile
+            </div>
+            <div class="sidebar-link" onclick="window.location.href='index.html'">
+                <i class="fas fa-store"></i> Browse Store
+            </div>
+            <div class="sidebar-link" onclick="triggerLogout()" style="margin-top: auto; color: var(--danger);">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <!-- Library Panel -->
+            <section class="dashboard-panel active" id="libraryPanel">
+                <div class="dashboard-header">
+                    <div class="dashboard-title">
+                        <h2>My Purchased Library</h2>
+                        <p>Access and download your digital collection</p>
+                    </div>
+                    <a href="index.html" class="btn-primary"><i class="fas fa-plus"></i> Buy More Books</a>
+                </div>
+                <div class="book-grid" id="purchasedBooksGrid">
+                    <div class="spinner-container" style="grid-column: 1 / -1;">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profile Panel -->
+            <section class="dashboard-panel" id="profilePanel">
+                <div class="dashboard-header">
+                    <div class="dashboard-title">
+                        <h2>My Profile</h2>
+                        <p>Your account information</p>
+                    </div>
+                </div>
+                <div class="auth-card" style="margin: 0; max-width: 550px;">
+                    <div style="display:flex; align-items:center; gap:1.5rem; margin-bottom:2rem; padding-bottom:1.5rem; border-bottom:1px solid var(--glass-border);">
+                        <div style="width:70px; height:70px; border-radius:50%; background:var(--primary); display:flex; align-items:center; justify-content:center; font-size:2rem; font-weight:700;">
+                            <span id="profileInitials">U</span>
+                        </div>
+                        <div>
+                            <h3 id="profileName" style="font-size:1.4rem;">User Account</h3>
+                            <p id="profileProvider" style="color:var(--accent); font-size:0.85rem; font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-top:0.2rem;">Email Account</p>
+                        </div>
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:1.2rem;">
+                        <div>
+                            <label style="color:#888; font-size:0.85rem; display:block; margin-bottom:0.2rem;">Email Address</label>
+                            <span id="profileEmail" style="font-weight:500; font-size:1.1rem;">-</span>
+                        </div>
+                        <div>
+                            <label style="color:#888; font-size:0.85rem; display:block; margin-bottom:0.2rem;">Registered On</label>
+                            <span id="profileDate" style="font-weight:500; font-size:1.1rem;">-</span>
+                        </div>
+                        <div>
+                            <label style="color:#888; font-size:0.85rem; display:block; margin-bottom:0.2rem;">User ID</label>
+                            <span id="profileId" style="font-family:monospace; color:var(--primary-light); font-size:1.05rem;">-</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | RPS Bookstore</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <i class="fas fa-shield-alt"></i> RPS<span>Admin</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html" target="_blank"><i class="fas fa-external-link-alt"></i> View Shop</a>
+            <button class="btn-secondary" onclick="triggerLogout()" style="padding: 0.4rem 1.2rem; font-size: 0.9rem;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+    </nav>
+
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-link active" onclick="switchPanel('sales')">
+                <i class="fas fa-chart-line"></i> Sales Dashboard
+            </div>
+            <div class="sidebar-link" onclick="switchPanel('books')">
+                <i class="fas fa-book-medical"></i> Manage Books
+            </div>
+            <div class="sidebar-link" onclick="switchPanel('users')">
+                <i class="fas fa-users-cog"></i> Users & Purchases
+            </div>
+            <div class="sidebar-link" onclick="switchPanel('categories')">
+                <i class="fas fa-tags"></i> Categories
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <!-- 1. Sales Dashboard Panel -->
+            <section class="dashboard-panel active" id="salesPanel">
+                <div class="dashboard-header">
+                    <div class="dashboard-title">
+                        <h2>Sales Analytics</h2>
+                        <p>Real-time revenue, sales metrics, and store performance</p>
+                    </div>
+                    <button class="btn-primary" onclick="loadSalesDashboard()"><i class="fas fa-sync-alt"></i> Refresh</button>
+                </div>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon revenue"><i class="fas fa-dollar-sign"></i></div>
+                        <div class="metric-info">
+                            <h3 id="statRevenue">$0.00</h3>
+                            <p>Total Revenue</p>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon sales"><i class="fas fa-shopping-cart"></i></div>
+                        <div class="metric-info">
+                            <h3 id="statSales">0</h3>
+                            <p>Total Sales</p>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon"><i class="fas fa-users"></i></div>
+                        <div class="metric-info">
+                            <h3 id="statUsers">0</h3>
+                            <p>Total Users</p>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon"><i class="fas fa-book"></i></div>
+                        <div class="metric-info">
+                            <h3 id="statBooks">0</h3>
+                            <p>Total E-Books</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-bottom:3rem;">
+                    <div class="chart-container">
+                        <h3>Revenue by Category</h3>
+                        <div class="chart-bar-list" id="categoryRevenueChart">
+                            <p style="color:#aaa; text-align:center; padding:2rem 0;">No sales data yet</p>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Recent Transactions</h3>
+                        <div class="table-container" style="border:none; box-shadow:none; margin:0; background:transparent;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>User</th>
+                                        <th>Book</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recentTransactionsTable">
+                                    <tr><td colspan="3" style="text-align:center; color:#888; padding:2rem 0;">No recent orders</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Manage Books Panel -->
+            <section class="dashboard-panel" id="booksPanel">
+                <div class="dashboard-header">
+                    <div class="dashboard-title">
+                        <h2>E-Book Catalog</h2>
+                        <p>Upload, edit, or remove e-books from the storefront</p>
+                    </div>
+                    <button class="btn-primary" onclick="openBookModal()"><i class="fas fa-plus"></i> Upload New E-Book</button>
+                </div>
+                <div class="manager-grid" id="managerBooksGrid">
+                    <div class="spinner-container" style="grid-column:1/-1;"><div class="spinner"></div></div>
+                </div>
+            </section>
+
+            <!-- 3. Users & Purchases Panel -->
+            <section class="dashboard-panel" id="usersPanel">
+                <div class="dashboard-header">
+                    <div class="dashboard-title">
+                        <h2>Users & Purchases</h2>
+                        <p>Track registered members and transaction history</p>
+                    </div>
+                </div>
+                <div style="display:flex; gap:1rem; border-bottom:1px solid var(--glass-border); padding-bottom:1rem; margin-bottom:2rem;">
+                    <button class="category-btn active" id="subtabUsers" onclick="switchSubtab('users')">Registered Users</button>
+                    <button class="category-btn" id="subtabPurchases" onclick="switchSubtab('purchases')">All Purchases</button>
+                </div>
+                <div class="table-container" id="usersTableContainer">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>User ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Auth Provider</th>
+                                <th>Registered</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody">
+                            <tr><td colspan="5" style="text-align:center; color:#888;">No users found.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-container" id="purchasesTableContainer" style="display:none;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Purchase ID</th>
+                                <th>Customer</th>
+                                <th>Book</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="purchasesTableBody">
+                            <tr><td colspan="6" style="text-align:center; color:#888;">No purchases recorded yet.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 4. Categories Panel -->
+            <section class="dashboard-panel" id="categoriesPanel">
+                <div class="dashboard-header">
+                    <div class="dashboard-title">
+                        <h2>Book Categories</h2>
+                        <p>Manage book classification folders</p>
+                    </div>
+                </div>
+                <div class="category-manager-container">
+                    <div class="category-list-card">
+                        <h3>Available Categories</h3>
+                        <div class="category-tags" id="categoryTagsContainer"></div>
+                    </div>
+                    <div class="category-list-card">
+                        <h3>Add New Category</h3>
+                        <form id="addCategoryForm" style="margin-top:1.5rem;">
+                            <div class="form-group">
+                                <label for="newCategoryName">Category Name</label>
+                                <input type="text" id="newCategoryName" class="form-control" placeholder="e.g. Science Fiction" required>
+                            </div>
+                            <button type="submit" class="btn-primary" style="width:100%;">Create Category</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Upload / Edit Book Modal -->
+    <div class="modal-wrapper" id="bookModal">
+        <div class="modal-content" style="max-height:90vh; overflow-y:auto;">
+            <div class="modal-header">
+                <h3 id="modalTitle">Upload E-Book</h3>
+                <button class="modal-close" onclick="closeBookModal()">&times;</button>
+            </div>
+            <form id="bookForm" enctype="multipart/form-data">
+                <input type="hidden" id="editBookId">
+                <div class="form-group">
+                    <label>Book Title *</label>
+                    <input type="text" id="bookTitle" class="form-control" placeholder="Enter book title" required>
+                </div>
+                <div class="form-group">
+                    <label>Description *</label>
+                    <textarea id="bookDescription" class="form-control" required style="height:100px; resize:vertical;"></textarea>
+                </div>
+                <div style="display:flex; gap:1rem;">
+                    <div class="form-group" style="flex:1;">
+                        <label>Category *</label>
+                        <select id="bookCategory" class="form-control" required style="background:#000; color:#fff;">
+                        </select>
+                    </div>
+                    <div class="form-group" style="flex:1;">
+                        <label>Price (USD) *</label>
+                        <input type="number" id="bookPrice" class="form-control" min="0" step="0.01" placeholder="0.00" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Cover Image (JPG/PNG) <span id="coverRequiredNote" style="color:var(--accent);">*required</span></label>
+                    <div class="file-upload-wrapper" onclick="document.getElementById('bookCoverInput').click()">
+                        <i class="fas fa-image"></i>
+                        <p id="coverUploadText" style="margin-top:0.4rem; color:#aaa;">Click to select cover image</p>
+                        <input type="file" id="bookCoverInput" accept="image/*" onchange="previewFilename(this, 'coverUploadText')">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>E-Book PDF File <span id="pdfRequiredNote" style="color:var(--accent);">*required</span></label>
+                    <div class="file-upload-wrapper" onclick="document.getElementById('bookPdfInput').click()">
+                        <i class="fas fa-file-pdf"></i>
+                        <p id="pdfUploadText" style="margin-top:0.4rem; color:#aaa;">Click to select PDF file</p>
+                        <input type="file" id="bookPdfInput" accept="application/pdf" onchange="previewFilename(this, 'pdfUploadText')">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" onclick="closeBookModal()">Cancel</button>
+                    <button type="submit" class="btn-primary" id="saveBookBtn"><i class="fas fa-save"></i> Save E-Book</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
