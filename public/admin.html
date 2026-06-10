@@ -9,12 +9,13 @@
 </head>
 <body>
     <nav>
-        <div class="logo">
-            <i class="fas fa-shield-alt"></i> RPS<span>Admin</span>
+        <div class="logo" style="cursor:pointer;" onclick="window.location.href='index.html'">
+            <img src="logo.png" alt="RPS Logo" style="height: 50px; max-height: 50px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span style="display: none;">Research <span>Publishing</span></span>
         </div>
         <div class="nav-links">
             <a href="index.html" target="_blank"><i class="fas fa-external-link-alt"></i> View Shop</a>
-            <button class="btn-secondary" onclick="triggerLogout()" style="padding: 0.4rem 1.2rem; font-size: 0.9rem;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            <button class="btn-secondary" onclick="triggerLogout()" style="padding: 0.4rem 1.2rem; font-size: 0.9rem; border-radius:20px; cursor:pointer;"><i class="fas fa-sign-out-alt"></i> Logout</button>
         </div>
     </nav>
 

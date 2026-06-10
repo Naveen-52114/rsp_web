@@ -3,76 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RPS E-Bookstore | Discover Premium Books</title>
-    <meta name="description" content="Welcome to RPS E-Bookstore. Discover premium scientific, tech, educational, and fictional books.">
+    <title>RPS | Research Publishing</title>
+    <meta name="description" content="Research Publishing - Innovative Partners for Publishing Solutions. Discover our curated collection of premium scientific, tech, educational, and fictional books.">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <nav>
-        <div class="logo" id="navLogo">
-            <i class="fas fa-book-open"></i> RPS<span>Bookstore</span>
+        <div class="logo" style="cursor:pointer;" onclick="window.location.href='index.html'">
+            <img src="logo.png" alt="RPS Logo" style="height: 50px; max-height: 50px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span style="display: none;">Research <span>Publishing</span></span>
         </div>
         <div class="nav-links" id="navLinks">
             <a href="index.html" class="active">Home</a>
+            <a href="#library">Library</a>
+            <a href="#about">About</a>
+        </div>
+        <div class="nav-actions" id="navActions" style="display:flex; align-items:center; gap:1rem;">
+            <a href="publish.html"><button class="btn-primary">Publish with us</button></a>
         </div>
     </nav>
 
     <header class="hero">
-        <div class="hero-content">
-            <h1>Unlock a World of <span class="highlight">Knowledge</span></h1>
-            <p>Explore our curated collection of premium e-books, spanning Science, Technology, Novels, and Education. Read securely anywhere.</p>
+        <div class="hero-content fade-in-up">
+            <h1>Research <span class="highlight">Publishing</span></h1>
+            <p class="tagline">Innovative Partners for Publishing Solutions</p>
+            <p>Discover our curated collection of premium research and e-books, beautifully crafted for the modern reader.</p>
             <div class="search-container">
                 <div class="search-bar">
-                    <input type="text" id="searchInput" placeholder="Search by title, author, or category...">
-                    <button class="btn-primary" style="margin: 0.1rem 0.1rem 0.1rem 0; border-radius: 50px; font-size: 0.9rem; padding: 0.5rem 1.2rem;"><i class="fas fa-search"></i> Search</button>
+                    <input type="text" id="searchInput" placeholder="Search by title, author, or keyword...">
+                    <button class="btn-primary" id="searchBtn" style="margin: 0.1rem 0.1rem 0.1rem 0; border-radius: 50px; font-size: 0.9rem; padding: 0.5rem 1.2rem; cursor:pointer;"><i class="fas fa-search"></i> Search</button>
                 </div>
             </div>
         </div>
     </header>
 
-    <section class="books-section" id="catalog">
+    <section id="library" class="books-section">
         <div class="section-header">
-            <h2>Explore Our Collection</h2>
-            <p style="color: #a0a0b0; margin-top: 0.5rem;">Find the perfect e-book to match your interests</p>
+            <h2>Our E-Books</h2>
+            <p style="color: #aaa;">Explore our diverse catalog of academic, scientific, and fictional publications</p>
         </div>
 
-        <div class="categories-container" id="categoriesContainer">
+        <div class="categories" id="categoryContainer">
             <button class="category-btn active" data-category="all">All Books</button>
         </div>
 
         <div class="book-grid" id="bookGrid">
-            <div class="spinner-container">
+            <div class="spinner-container" style="grid-column: 1 / -1; display: flex; justify-content: center; padding: 3rem 0;">
                 <div class="spinner"></div>
             </div>
         </div>
     </section>
 
-    <footer>
+    <section id="about" class="about-section">
+        <div class="section-header">
+            <h2>About RPS</h2>
+            <p style="color: #aaa;">RESEARCH PUBLISHING (S) PTE. LTD. (Singapore)</p>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <p><strong>Research Publishing Services (RPS)</strong> is a publishing company headquartered in Singapore with facilities in Singapore and Chennai. RPS offers state-of-the-art technology-driven products and services to conference organizers, societies, and university presses across the globe. At RPS, we strive to deliver products and services that suit each customer's unique needs by blending creativity and originality with business efficiency.</p>
+                <p>Fired by a passion for business excellence and driven by sound human values, RPS continues to grow based on its capabilities. We at RPS deliver on commitments, a practice that has transformed itself into a hallmark of RPS's business procedures and reason for its success story. We nurture new technological strengths, while enlarging the domain expertise substantially. Our expert workflows based on global best practices translate into a significant reduction in turnaround times.</p>
+                <p>RPS is strongly driven by values such as <strong>Quality, Commitment, Discipline, Learning, Integrity, Respect, Teamwork, Customer-orientation and Trust</strong>. Research Publishing Services was founded by publishing experts, who have worked in international publishing, production, and marketing for over a decade.</p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-card">
+                    <i class="fas fa-globe-asia"></i>
+                    <h4>Country of Registration</h4>
+                    <p>Singapore</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-file-signature"></i>
+                    <h4>Registration No.</h4>
+                    <p>201930936E</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-book-open"></i>
+                    <h4>Local SIC</h4>
+                    <p>58110 (Publishing of books & publications)</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h4>Incorporation Date</h4>
+                    <p>17 Sep 2019</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-building"></i>
+                    <h4>Entity Type</h4>
+                    <p>Exempt Private Limited Company</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <h4>Officers</h4>
+                    <p>3 Directors</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
         <div class="footer-content">
             <div class="footer-col company-details">
-                <h3>RPS E-Bookstore</h3>
-                <p>Providing high-quality academic, scientific, and fictional publications to readers globally.</p>
+                <h3>Research Publishing (RPS)</h3>
+                <p>Innovative Partners for Publishing Solutions. Bringing research and stories to life in the digital age.</p>
                 <div style="margin-top: 1.5rem;">
-                    <p><i class="fas fa-map-marker-alt"></i> 11 Upper Boon Keng Road, Singapore</p>
-                    <p><i class="fas fa-envelope"></i> support@rpsbookstore.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 11 UPPER BOON KENG ROAD, #12-931, BOON KENG VILLE, Singapore 380011</p>
+                    <p><i class="fas fa-phone-alt"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> contact@researchpublishing.com</p>
                 </div>
             </div>
             <div class="footer-col">
                 <h3>Quick Links</h3>
-                <a href="#catalog">Browse Catalog</a>
-                <a href="login.html">My Account</a>
-                <a href="admin-login.html">Admin Portal</a>
+                <a href="#library">Browse Library</a>
+                <a href="publish.html">Publish with Us</a>
+                <a href="#">Author Resources</a>
+                <a href="#">Reading App</a>
             </div>
             <div class="footer-col">
-                <h3>Customer Care</h3>
-                <a href="#">FAQ & Support</a>
-                <a href="#">Terms & Conditions</a>
+                <h3>Legal</h3>
+                <a href="#">Terms of Service</a>
                 <a href="#">Privacy Policy</a>
+                <a href="#">Copyright Information</a>
+                <a href="#">Cookie Policy</a>
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2026 RPS E-Bookstore. All rights reserved.</p>
+            <p>&copy; 2026 Research Publishing (RPS). All rights reserved.</p>
         </div>
     </footer>
 

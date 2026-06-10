@@ -1,13 +1,15 @@
 // admin.js - Admin Dashboard Controller
 let categoriesList = [];
 
-document.addEventListener('DOMContentLoaded', initAdminPanel);
+document.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('load', initAdminPanel);
+});
 
 async function initAdminPanel() {
     const authState = await checkAuthState();
     if (!authState.authenticated || authState.role !== 'admin') {
         showToast("Unauthorized. Admin access required.", "error");
-        setTimeout(() => { window.location.href = 'admin-login.html'; }, 1200);
+        setTimeout(() => { window.location.href = 'login.html'; }, 1200);
         return;
     }
 

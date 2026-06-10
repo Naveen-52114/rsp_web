@@ -1,6 +1,8 @@
 // dashboard.js - User Library Dashboard
 
-document.addEventListener('DOMContentLoaded', initDashboard);
+document.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('load', initDashboard);
+});
 
 async function initDashboard() {
     const authState = await checkAuthState();

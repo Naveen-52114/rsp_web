@@ -397,7 +397,7 @@ app.post('/api/auth/register', async (req, res) => {
     res.cookie('token', token, {
       httpOnly: true,
       secure: false, // Set to true if HTTPS
-      sameSite: 'strict',
+      sameSite: 'lax',
       maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     });
 
@@ -416,6 +416,34 @@ app.post('/api/auth/login', async (req, res) => {
   }
 
   try {
+    const adminEmail = process.env.ADMIN_EMAIL || 'admin@rpsbookstore.com';
+    
+    // Check if it's the admin logging in
+    if (email.toLowerCase() === adminEmail.toLowerCase()) {
+      const admins = await dbHelper.get('admins');
+      let adminAccount = null;
+      if (admins) {
+        adminAccount = Object.values(admins).find(a => a.email.toLowerCase() === email.toLowerCase());
+      }
+
+      if (adminAccount) {
+        const isMatch = await bcrypt.compare(password, adminAccount.passwordHash);
+        if (isMatch) {
+          const adminToken = jwt.sign({ email: adminAccount.email, role: 'admin' }, JWT_SECRET, { expiresIn: '1d' });
+          res.clearCookie('token');
+          res.cookie('admin_token', adminToken, {
+            httpOnly: true,
+            secure: false, // Set to true if HTTPS
+            sameSite: 'lax',
+            maxAge: 24 * 60 * 60 * 1000 // 1 day
+          });
+          return res.json({ message: "Logged in successfully", role: 'admin', user: { email: adminAccount.email } });
+        }
+      }
+      return res.status(400).json({ message: "Invalid email or password." });
+    }
+
+    // Standard user login
     const users = await dbHelper.get('users');
     let user = null;
     if (users) {
@@ -432,15 +460,16 @@ app.post('/api/auth/login', async (req, res) => {
     }
 
     const token = jwt.sign({ userId: user.userId, name: user.name, email: user.email, role: 'user' }, JWT_SECRET, { expiresIn: '7d' });
+    res.clearCookie('admin_token');
     res.cookie('token', token, {
       httpOnly: true,
       secure: false,
-      sameSite: 'strict',
+      sameSite: 'lax',
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
     const { passwordHash: _, ...userResp } = user;
-    return res.json({ message: "Logged in successfully", user: userResp });
+    return res.json({ message: "Logged in successfully", role: 'user', user: userResp });
   } catch (error) {
     console.error("Login Error:", error);
     return res.status(500).json({ message: "Internal server error." });
@@ -491,7 +520,7 @@ app.post('/api/auth/google', async (req, res) => {
     res.cookie('token', token, {
       httpOnly: true,
       secure: false,
-      sameSite: 'strict',
+      sameSite: 'lax',
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
@@ -528,7 +557,7 @@ app.post('/api/auth/admin-login', async (req, res) => {
     res.cookie('admin_token', adminToken, {
       httpOnly: true,
       secure: false,
-      sameSite: 'strict',
+      sameSite: 'lax',
       maxAge: 24 * 60 * 60 * 1000
     });
 
