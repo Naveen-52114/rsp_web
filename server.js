@@ -962,7 +962,8 @@ app.post('/api/payments/create-order', verifyUserToken, async (req, res) => {
       }],
       application_context: {
         shipping_preference: 'NO_SHIPPING',
-        user_action: 'PAY_NOW'
+        user_action: 'PAY_NOW',
+        landing_page: 'LOGIN'
       }
     };
 

@@ -21,6 +21,38 @@
       "passwordHash": "$2a$10$X4/U63ojSGXyR10R5AFzP.gfup4sXteuShKNY6Iii9OqGa9VsB/1O",
       "authProvider": "email",
       "registrationDate": "2026-06-10T13:58:56.494Z"
+    },
+    "usr_wh25n1kir": {
+      "userId": "usr_wh25n1kir",
+      "name": "NAVEEN .V",
+      "email": "naveenking0411@gmail.com",
+      "authProvider": "google",
+      "googleId": "113659750490673542339",
+      "registrationDate": "2026-06-11T11:25:26.362Z"
+    },
+    "usr_5hj6j2ph9": {
+      "userId": "usr_5hj6j2ph9",
+      "name": "NAVEEN .V",
+      "email": "naveenking04112005@gmail.com",
+      "authProvider": "google",
+      "googleId": "100174676825655205676",
+      "registrationDate": "2026-06-11T13:12:38.289Z"
+    },
+    "usr_ao1b41dy2": {
+      "userId": "usr_ao1b41dy2",
+      "name": "kumar",
+      "email": "naveen123@gmail.com",
+      "passwordHash": "$2a$10$lcxn/o.a9U9sYK/GHmZj0OHnELCLNfNXSf5PoQfvMTCOE.Jpl52Ty",
+      "authProvider": "email",
+      "registrationDate": "2026-06-11T13:16:38.073Z"
+    },
+    "usr_8sqdz487g": {
+      "userId": "usr_8sqdz487g",
+      "name": "NAVEEN V 5.11323E+11",
+      "email": "511323243034@kingston.ac.in",
+      "authProvider": "google",
+      "googleId": "111865243743210883634",
+      "registrationDate": "2026-06-11T13:27:26.906Z"
     }
   },
   "passwordResets": {
@@ -48,6 +80,62 @@
     "Education": true,
     "Novel": true
   },
-  "purchases": {},
-  "payments": {}
+  "purchases": {
+    "pur_nwt4dktdj": {
+      "purchaseId": "pur_nwt4dktdj",
+      "userId": "usr_w8gwopfnn",
+      "bookId": "bk_yhalb4r7o",
+      "amountPaid": 10.02,
+      "paymentStatus": "COMPLETED",
+      "purchaseDate": "2026-06-11T13:10:47.480Z"
+    },
+    "pur_j4pkaai3h": {
+      "purchaseId": "pur_j4pkaai3h",
+      "userId": "usr_5hj6j2ph9",
+      "bookId": "bk_yhalb4r7o",
+      "amountPaid": 10.02,
+      "paymentStatus": "COMPLETED",
+      "purchaseDate": "2026-06-11T13:24:36.043Z"
+    },
+    "pur_owz7qswbk": {
+      "purchaseId": "pur_owz7qswbk",
+      "userId": "usr_8sqdz487g",
+      "bookId": "bk_yhalb4r7o",
+      "amountPaid": 10.02,
+      "paymentStatus": "COMPLETED",
+      "purchaseDate": "2026-06-11T13:32:43.047Z"
+    }
+  },
+  "payments": {
+    "2UM06267FF662430W": {
+      "paymentId": "2UM06267FF662430W",
+      "purchaseId": "pur_nwt4dktdj",
+      "userId": "usr_w8gwopfnn",
+      "bookId": "bk_yhalb4r7o",
+      "amount": 10.02,
+      "status": "COMPLETED",
+      "paypalPayerId": "9YR9ALJG5M84Y",
+      "timestamp": "2026-06-11T13:10:47.494Z"
+    },
+    "37L712537U909363T": {
+      "paymentId": "37L712537U909363T",
+      "purchaseId": "pur_j4pkaai3h",
+      "userId": "usr_5hj6j2ph9",
+      "bookId": "bk_yhalb4r7o",
+      "amount": 10.02,
+      "status": "COMPLETED",
+      "paypalPayerId": "9YR9ALJG5M84Y",
+      "timestamp": "2026-06-11T13:24:36.054Z"
+    },
+    "0UM18401PN731541X": {
+      "paymentId": "0UM18401PN731541X",
+      "purchaseId": "pur_owz7qswbk",
+      "userId": "usr_8sqdz487g",
+      "bookId": "bk_yhalb4r7o",
+      "amount": 10.02,
+      "status": "COMPLETED",
+      "paypalPayerId": "9YR9ALJG5M84Y",
+      "timestamp": "2026-06-11T13:32:43.053Z"
+    }
+  }
 }

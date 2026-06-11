@@ -131,7 +131,7 @@ async function loadPayPal() {
 
         const script = document.createElement('script');
         script.id = 'paypal-sdk';
-        script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&currency=USD&disable-funding=card,credit`;
+        script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&currency=USD&intent=capture&disable-funding=card,credit`;
         script.async = true;
         script.onload = renderPayPalButtons;
         script.onerror = () => showToast("PayPal failed to load. Check your internet connection.", "error");
