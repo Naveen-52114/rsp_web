@@ -765,6 +765,7 @@ app.post('/api/books', verifyAdminToken, (req, res) => {
       };
 
       await dbHelper.set(`books/${bookId}`, newBook);
+      booksCache = null; // Invalidate cache
       return res.status(201).json({ message: "Book uploaded successfully.", book: newBook });
     } catch (error) {
       console.error("Add Book Error:", error);
@@ -816,6 +817,7 @@ app.put('/api/books/:id', verifyAdminToken, (req, res) => {
       }
 
       await dbHelper.set(`books/${bookId}`, updatedData);
+      booksCache = null; // Invalidate cache
       return res.json({ message: "Book updated successfully.", book: updatedData });
     } catch (error) {
       console.error("Edit Book Error:", error);
@@ -845,6 +847,7 @@ app.delete('/api/books/:id', verifyAdminToken, async (req, res) => {
     }
 
     await dbHelper.remove(`books/${bookId}`);
+    booksCache = null; // Invalidate cache
     return res.json({ message: "Book deleted successfully." });
   } catch (error) {
     console.error("Delete Book Error:", error);
