@@ -1174,5 +1174,5 @@ app.get('/api/users/me/purchases', verifyUserToken, async (req, res) => {
 
 // Start listening
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server running on ${PORT}`);
 });
