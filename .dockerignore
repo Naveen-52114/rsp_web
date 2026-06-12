@@ -1,4 +1,6 @@
 node_modules
+.firebase
+uploads
 .git
+firebase-debug.log
 .env
-service-account.json
