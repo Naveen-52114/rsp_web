@@ -108,20 +108,20 @@ if (bookGrid) {
 
 function renderBooks() {
     if (!bookGrid) return;
-    
+
     bookGrid.innerHTML = '';
-    
+
     // Filter logic
     let filteredBooks = mockBooks.filter(book => {
         const matchesCategory = currentCategory === 'all' || book.category === currentCategory;
         const matchesSubcategory = currentSubcategory === 'all' || book.subcategory === currentSubcategory;
-        
+
         const searchTerm = currentSearch.toLowerCase();
-        const matchesSearch = book.title.toLowerCase().includes(searchTerm) || 
-                              book.author.toLowerCase().includes(searchTerm) ||
-                              book.category.toLowerCase().includes(searchTerm) ||
-                              book.subcategory.toLowerCase().includes(searchTerm);
-                              
+        const matchesSearch = book.title.toLowerCase().includes(searchTerm) ||
+            book.author.toLowerCase().includes(searchTerm) ||
+            book.category.toLowerCase().includes(searchTerm) ||
+            book.subcategory.toLowerCase().includes(searchTerm);
+
         return matchesCategory && matchesSubcategory && matchesSearch;
     });
 
@@ -161,17 +161,17 @@ function renderBooks() {
 
 function renderSubcategories(category) {
     if (!subcategoryContainer) return;
-    
+
     subcategoryContainer.innerHTML = '';
     currentSubcategory = 'all'; // Reset subcategory when category changes
-    
+
     if (category === 'all' || !subcategoriesMap[category]) {
         subcategoryContainer.classList.remove('show');
         return;
     }
 
     const subs = subcategoriesMap[category];
-    
+
     // Add "All" subcategory button
     const allBtn = document.createElement('button');
     allBtn.className = 'sub-btn active';
@@ -198,7 +198,7 @@ function setupEventListeners() {
                 // Update active class
                 document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
                 e.target.classList.add('active');
-                
+
                 currentCategory = e.target.dataset.category;
                 renderSubcategories(currentCategory);
                 renderBooks();
@@ -213,7 +213,7 @@ function setupEventListeners() {
                 // Update active class
                 document.querySelectorAll('.sub-btn').forEach(btn => btn.classList.remove('active'));
                 e.target.classList.add('active');
-                
+
                 currentSubcategory = e.target.dataset.sub;
                 renderBooks();
             }
@@ -226,9 +226,36 @@ function setupEventListeners() {
             currentSearch = e.target.value;
             renderBooks();
         });
+
+        // Navigate to library section on Enter key
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                currentSearch = searchInput.value;
+                renderBooks();
+                navigateToLibrary();
+            }
+        });
+    }
+
+    // Search button
+    const searchBtn = document.getElementById('searchBtn');
+    if (searchBtn && searchInput) {
+        searchBtn.addEventListener('click', () => {
+            currentSearch = searchInput.value;
+            renderBooks();
+            navigateToLibrary();
+        });
     }
 }
 
+// Smoothly scroll to the library / books store section
+function navigateToLibrary() {
+    const librarySection = document.getElementById('library');
+    if (librarySection) {
+        librarySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
 // Intersection Observer for Scroll Animations
 let observer;
 function initScrollAnimations() {
@@ -245,7 +272,7 @@ function initScrollAnimations() {
                 // Remove fade-in-up if it was already applied and re-apply to trigger
                 entry.target.style.animation = 'none';
                 entry.target.offsetHeight; /* trigger reflow */
-                entry.target.style.animation = null; 
+                entry.target.style.animation = null;
                 entry.target.classList.add('fade-in-up');
                 observer.unobserve(entry.target);
             }

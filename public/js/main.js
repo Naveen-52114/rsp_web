@@ -106,6 +106,16 @@ function setupListeners() {
             searchQuery = e.target.value;
             renderBooks();
         });
+
+        // Navigate to library section on Enter key
+        searchInput.addEventListener('keydown', e => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                searchQuery = searchInput.value;
+                renderBooks();
+                navigateToLibrary();
+            }
+        });
     }
 
     const searchBtn = document.getElementById('searchBtn');
@@ -113,6 +123,7 @@ function setupListeners() {
         searchBtn.addEventListener('click', () => {
             searchQuery = searchInput.value;
             renderBooks();
+            navigateToLibrary();
         });
     }
 
@@ -126,5 +137,13 @@ function setupListeners() {
                 renderBooks();
             }
         });
+    }
+}
+
+// Smoothly scroll to the library / books store section
+function navigateToLibrary() {
+    const librarySection = document.getElementById('library');
+    if (librarySection) {
+        librarySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 }
