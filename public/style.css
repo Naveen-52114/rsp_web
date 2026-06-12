@@ -1272,14 +1272,44 @@ tr:hover td {
 }
 
 @media (max-width: 768px) {
-    .hero h1 { font-size: 2.5rem; }
-    .nav-links { display: none; }
-    .category-manager-container {
-        grid-template-columns: 1fr;
+    /* Typography & Hero */
+    .hero h1 { font-size: 2.2rem; }
+    .hero p { font-size: 1.05rem; padding: 0 1rem; }
+    .tagline { font-size: 1.1rem; }
+    
+    /* Navigation - Bottom Tab Bar for Mobile */
+    .nav-links {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 10, 15, 0.98);
+        backdrop-filter: blur(15px);
+        padding: 0.8rem 0;
+        justify-content: space-evenly;
+        border-top: 1px solid var(--glass-border);
+        z-index: 1000;
+        margin: 0;
+        gap: 0.5rem;
     }
-    .dashboard-wrapper {
-        flex-direction: column;
-    }
+    .nav-links a { font-size: 0.85rem; padding: 0.5rem; text-align: center; flex: 1; }
+    body { padding-bottom: 70px; }
+    
+    /* Layout Adjustments */
+    .books-section { padding: 4rem 1rem; }
+    .about-section { padding: 4rem 1rem; }
+    .footer-content { gap: 2rem; flex-direction: column; text-align: center; }
+    .footer-col.company-details p { justify-content: center; }
+    .footer-col { min-width: 100%; }
+    
+    /* Forms & Cards */
+    .auth-wrapper { padding: 6rem 1rem 2rem; }
+    .auth-card { padding: 1.8rem; }
+    
+    /* Admin Dashboard */
+    .category-manager-container { grid-template-columns: 1fr; }
+    .dashboard-wrapper { flex-direction: column; padding-top: 60px; }
     .sidebar {
         position: relative;
         width: 100%;
@@ -1287,11 +1317,17 @@ tr:hover td {
         flex-direction: row;
         overflow-x: auto;
         padding: 1rem;
+        gap: 1.5rem;
+        border-right: none;
+        border-bottom: 1px solid var(--glass-border);
     }
-    .main-content {
-        margin-left: 0;
-        padding: 1.5rem;
-    }
+    .sidebar-link { white-space: nowrap; }
+    .main-content { margin-left: 0; padding: 1.5rem; }
+    .metrics-grid { grid-template-columns: 1fr; }
+    
+    /* General components */
+    .btn-primary, .btn-secondary { padding: 0.5rem 1rem; font-size: 0.95rem; }
+    .logo img { height: 35px !important; max-height: 35px !important; }
 }
 
 /* Publish Page Styles */
@@ -1352,6 +1388,11 @@ tr:hover td {
 }
 
 @media (max-width: 768px) {
+    .page-header { padding: 8rem 1rem 2rem; }
+    .page-header h1 { font-size: 2.2rem; }
+    .publish-container { margin: 2rem auto; padding: 0 1rem; }
+    .publish-form { padding: 1.5rem; }
+    
     .form-row {
         flex-direction: column;
         gap: 0;
@@ -1359,4 +1400,11 @@ tr:hover td {
     .form-row .form-group {
         margin-bottom: 1.5rem;
     }
+}
+
+@media (max-width: 480px) {
+    .book-details-cover { height: 320px; max-width: 220px; margin: 0 auto; }
+    .book-details-title { font-size: 2rem; }
+    .price-tag { font-size: 1.5rem; }
+    .hero h1 { font-size: 1.8rem; }
 }
