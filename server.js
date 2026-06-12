@@ -684,15 +684,27 @@ app.get('/api/auth/me', (req, res) => {
 });
 
 
+let booksCache = null;
+let lastBooksCacheTime = 0;
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+
 // 2. Book Routes
 app.get('/api/books', async (req, res) => {
   try {
+    if (booksCache && (Date.now() - lastBooksCacheTime < CACHE_TTL)) {
+      return res.json(booksCache);
+    }
+    
     const books = await dbHelper.get('books');
     if (!books) return res.json([]);
     const bookList = Object.values(books).map(book => {
       const { pdfPath: _, ...bookPublic } = book;
       return bookPublic;
     });
+    
+    booksCache = bookList;
+    lastBooksCacheTime = Date.now();
+    
     return res.json(bookList);
   } catch (error) {
     console.error("Get Books Error:", error);
