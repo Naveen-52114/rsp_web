@@ -71,6 +71,26 @@
       "coverUrl": "/uploads/covers/cover-1781100768772-823709990.png",
       "pdfFilename": "pdf-1781100769272-472903169.pdf",
       "uploadDate": "2026-06-10T14:12:50.702Z"
+    },
+    "bk_wyn44a38f": {
+      "bookId": "bk_wyn44a38f",
+      "title": "A Tale of Two Cities",
+      "description": "A Tale of Two Cities is a famous historical novel set during the French Revolution. The story takes place in London and Paris and follows the lives of Charles Darnay, Sydney Carton, and Lucie Manette.\r\nCharles Darnay leaves his noble family in France to live a better life in England. Sydney Carton is a lawyer who struggles with his personal life but finds a chance to change himself. As the French Revolution begins, the characters face danger, difficult choices, and acts of courage.\r\nThe novel explores themes of love, sacrifice, justice, and redemption. It is known for its exciting story, memorable characters, and powerful ending.",
+      "category": "Novel",
+      "price": 25.24,
+      "coverUrl": "/uploads/covers/cover-1781253821187-232402028.png",
+      "pdfFilename": "pdf-1781253822445-43483666.pdf",
+      "uploadDate": "2026-06-12T08:43:43.828Z"
+    },
+    "bk_mlflsexbb": {
+      "bookId": "bk_mlflsexbb",
+      "title": "The Happy Prince and Other Tales",
+      "description": "Five beloved fairy tales including The Happy Prince, The Nightingale and the Rose, and The Selfish Giant. Elegant prose that blends beauty with moral depth.",
+      "category": "Story",
+      "price": 5.8,
+      "coverUrl": "/uploads/covers/cover-1781254147004-488189423.png",
+      "pdfFilename": "pdf-1781254147126-24940866.pdf",
+      "uploadDate": "2026-06-12T08:49:07.393Z"
     }
   },
   "categories": {
@@ -78,7 +98,8 @@
     "Science": true,
     "Technology": true,
     "Education": true,
-    "Novel": true
+    "Novel": true,
+    "gaming": true
   },
   "purchases": {
     "pur_nwt4dktdj": {
@@ -104,6 +125,14 @@
       "amountPaid": 10.02,
       "paymentStatus": "COMPLETED",
       "purchaseDate": "2026-06-11T13:32:43.047Z"
+    },
+    "pur_jonmek37q": {
+      "purchaseId": "pur_jonmek37q",
+      "userId": "usr_w8gwopfnn",
+      "bookId": "bk_mlflsexbb",
+      "amountPaid": 5.8,
+      "paymentStatus": "COMPLETED",
+      "purchaseDate": "2026-06-12T08:58:37.683Z"
     }
   },
   "payments": {
@@ -136,6 +165,16 @@
       "status": "COMPLETED",
       "paypalPayerId": "9YR9ALJG5M84Y",
       "timestamp": "2026-06-11T13:32:43.053Z"
+    },
+    "4966436598588984U": {
+      "paymentId": "4966436598588984U",
+      "purchaseId": "pur_jonmek37q",
+      "userId": "usr_w8gwopfnn",
+      "bookId": "bk_mlflsexbb",
+      "amount": 5.8,
+      "status": "COMPLETED",
+      "paypalPayerId": "9YR9ALJG5M84Y",
+      "timestamp": "2026-06-12T08:58:37.690Z"
     }
   }
 }
